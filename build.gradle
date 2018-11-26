@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'net.ltgt.apt' version '0.9'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4'
+}
+
+ext {
+    mapstructVersion = "1.3.0.Beta2"
+    lombokVersion = "1.18.0"
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    compile "org.mapstruct:mapstruct:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
+    testCompile 'junit:junit:4.12'
+    apt "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
+}
