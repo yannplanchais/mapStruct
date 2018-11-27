@@ -18,7 +18,11 @@
  */
 package com.mycompany.mapper;
 
+import com.mycompany.dto.SourceAvecAttributObjet;
 import com.mycompany.entities.TargetLombok;
+import com.mycompany.entities.TargetLombokAvecAttributObjet;
+import com.mycompany.entities.TargetLombokAvecAttributObjetNomDifferent;
+import com.mycompany.entities.TargetLombokAvecAttributObjetNomDifferentTotal;
 import com.mycompany.entities.TargetLombokSansSpecification;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -38,7 +42,18 @@ public interface SourceTargetMapper {
     @Mapping( source = "test", target = "testing" )
     TargetLombok toTargetLombok(Source s);
 
+    // Sans Annotation car il sait faire le mapping
     TargetLombokSansSpecification toTargetLombokSansSpecification(Source s);
 
+    TargetLombokAvecAttributObjet toTargetLombokAvecAttributObjet(SourceAvecAttributObjet s);
+
+    @Mapping( source = "testAvecObjet", target = "testAvecObjetNomDifferent" )
+    @Mapping( source = "sourceAvecObjet", target = "sourceAvecObjetNomDifferent" )
+    TargetLombokAvecAttributObjetNomDifferent toTargetLombokAvecAttributObjetNomDifferent(SourceAvecAttributObjet s);
+
+    @Mapping( source = "testAvecObjet", target = "testAvecObjetNomDifferentTotal" )
+    @Mapping( source = "sourceAvecObjet", target = "sourceAvecObjetNomDifferentTotal" )
+    @Mapping( source = "sourceAvecObjet.test", target = "sourceAvecObjetNomDifferentTotal.testing" )
+    TargetLombokAvecAttributObjetNomDifferentTotal toTargetLombokAvecAttributObjetNomDifferentTotal(SourceAvecAttributObjet s);
 
 }
