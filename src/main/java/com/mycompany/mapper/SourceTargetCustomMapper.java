@@ -1,0 +1,45 @@
+/**
+ * Copyright 2012-2017 Gunnar Morling (http://www.gunnarmorling.de/) and/or other contributors as
+ * indicated by the @authors tag. See the copyright.txt file in the distribution for a full listing
+ * of all contributors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+package com.mycompany.mapper;
+
+import com.mycompany.dto.SourceAvecAttributObjet;
+import com.mycompany.entities.TargetLombokAvecAttributObjetNomDifferentTotal;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
+
+/**
+ * Interface permettant de tester un mapping particulier défini dans une autre classe.
+ */
+@Mapper(uses = TargetEmptyMapper.class)
+public interface SourceTargetCustomMapper {
+
+  SourceTargetCustomMapper MAPPER = Mappers.getMapper(SourceTargetCustomMapper.class);
+
+
+  @Mapping(source = "testAvecObjet", target = "testAvecObjetNomDifferentTotal")
+  @Mapping(source = "sourceAvecObjet", target = "sourceAvecObjetNomDifferentTotal", qualifiedByName = {
+      "toTarget"})
+  TargetLombokAvecAttributObjetNomDifferentTotal toTargetLombokAvecAttributObjetNomDifferentTotal(
+      SourceAvecAttributObjet s);
+
+
+  @Mapping(source = "testAvecObjetNomDifferentTotal", target = "testAvecObjet")
+  @Mapping(source = "sourceAvecObjetNomDifferentTotal", target = "sourceAvecObjet", qualifiedByName = {
+      "toSource"})
+  SourceAvecAttributObjet toSourceAttributObjet(TargetLombokAvecAttributObjetNomDifferentTotal t);
+
+}

@@ -20,6 +20,8 @@ package com.mycompany.entities;
 
 public class Target {
 
+    private String constante ;
+
     private Long testing;
 
     public Long getTesting() {
@@ -30,4 +32,11 @@ public class Target {
         this.testing = testing;
     }
 
+    public String getConstante() {
+        return constante;
+    }
+
+    public void setConstante(String constante) {
+        this.constante = constante;
+    }
 }

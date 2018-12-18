@@ -56,4 +56,7 @@ public interface SourceTargetMapper {
     @Mapping( source = "sourceAvecObjet.test", target = "sourceAvecObjetNomDifferentTotal.testing" )
     TargetLombokAvecAttributObjetNomDifferentTotal toTargetLombokAvecAttributObjetNomDifferentTotal(SourceAvecAttributObjet s);
 
+
+
+
 }
